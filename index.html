@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast</title>
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/darkly/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body style="margin: 0px; padding: 0px;">
+    <div
+      class="custom-navbar border border-success m-0 p-0"
+      style="background-color: #375a7f; margin: 0px; padding: 0px;"
+    >
+      <div class="row border border-secondary mx-0 py-1">
+        <div class="col-6">
+          <h4>Icon over herr</h4>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-9 border border-success p-0">
+              <form class="mx-0">
+                <input
+                  style="
+                    background-color: white;
+                    color: black;
+                    outline-style: none;
+                    float: left;
+                    border: none;
+                  "
+                  class="form-control border border-secondary mx-0"
+                  type="search"
+                  placeholder="City or Zip Code"
+                  aria-label="Search"
+                  id="input-city"
+                />
+              </form>
+            </div>
+            <div class="col-2 border border-secondary mx-0 p-0">
+              <i
+                class="fa fa-search"
+                aria-hidden="true"
+                style="font-size: 200%;"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Weather Display -->
+    <div class="container">
+      <div class="row">
+        <div class="col-6 mx-auto mt-5 border border-success">
+          <div class="row">
+            <div class="col-12 border border-success text-center mx-auto">
+              Wooster, OH
+            </div>
+            <div class="col-4 border border-success p-0">
+              <i
+                class="fa fa-cloud"
+                aria-hidden="true"
+                style="font-size: 7vmax;"
+              ></i>
+            </div>
+            <div class="col-8 border border-success p-0 text-center">
+              <h2 style="font-size: 7vmax;">58</h2>
+            </div>
+            <div class="col-12 border border-success">Sunny</div>
+            <div class="col-12 border border-success">
+              updated cuhhh
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="daily-container">
+      <div class="row">
+        <div class="col-12 mt-5 border border-success">Daily Forecast</div>
+        <div class="col-12 mx-auto py-2 px-4 border border-success">
+          <div class="row">
+            <div
+              class="col-xl-2 col-lg-2 col-md-3 col-sm-4 border border-success"
+            >
+              <div class="row">
+                <div class="col-12">Tue 9</div>
+                <div class="col-12">icon</div>
+                <div class="col-6">58</div>
+                <div class="col-6">49</div>
+                <div class="col-12">Mostly Cloudy</div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 border border-success">
+              <div class="row">
+                <div class="col-12">Tue 9</div>
+                <div class="col-12">icon</div>
+                <div class="col-6">58</div>
+                <div class="col-6">49</div>
+                <div class="col-12">Mostly Cloudy</div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 border border-success">
+              <div class="row">
+                <div class="col-12">Tue 9</div>
+                <div class="col-12">icon</div>
+                <div class="col-6">58</div>
+                <div class="col-6">49</div>
+                <div class="col-12">Mostly Cloudy</div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 border border-success">
+              <div class="row">
+                <div class="col-12">Tue 9</div>
+                <div class="col-12">icon</div>
+                <div class="col-6">58</div>
+                <div class="col-6">49</div>
+                <div class="col-12">Mostly Cloudy</div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 border border-success">
+              <div class="row">
+                <div class="col-12">Tue 9</div>
+                <div class="col-12">icon</div>
+                <div class="col-6">58</div>
+                <div class="col-6">49</div>
+                <div class="col-12">Mostly Cloudy</div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 border border-success">
+              <div class="row">
+                <div class="col-12">Tue 9</div>
+                <div class="col-12">icon</div>
+                <div class="col-6">58</div>
+                <div class="col-6">49</div>
+                <div class="col-12">Mostly Cloudy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- </nav> -->
+    <!-- JS, Popper.js, and jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="storage.js"></script>
+    <script src="weather.js"></script>
+    <script src="ui.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
