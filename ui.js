@@ -58,7 +58,7 @@ class Display {
     let i = 0;
     while (i <= 6) {
       let details = document.createElement("div");
-      details.className = `ml-3 mb-3 col-xl-1 col-lg-2 col-md-3 col-sm-4 forecast${
+      details.className = `ml-3 mb-3 col-xl-2 col-lg-2 col-md-3 col-sm-4 forecast${
         i + 1
       }`;
       details.setAttribute(
