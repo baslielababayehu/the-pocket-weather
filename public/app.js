@@ -8,6 +8,46 @@ window.addEventListener("load", (event) => {
   loadForecast();
 });
 
+//change to celsius
+document.querySelector(".change-celsius").addEventListener("click", (e) => {
+  console.log(e.target);
+  weather
+    .getWeather()
+    .then((results) => {
+      //change to celsius
+      display.setCelsiusMain(results);
+    })
+    .catch((err) => console.log(err));
+
+  weather
+    .getForecast()
+    .then((results) => {
+      //change to celsius
+      display.setCelsiusForecast(results);
+    })
+    .catch((err) => console.log(err));
+});
+
+//change to f
+document.querySelector(".change-fahrenheit").addEventListener("click", (e) => {
+  console.log(e.target);
+  weather
+    .getWeather()
+    .then((results) => {
+      //change to celsius
+      display.setFahrenheitMain(results);
+    })
+    .catch((err) => console.log(err));
+
+  weather
+    .getForecast()
+    .then((results) => {
+      //change to celsius
+      display.setFahrenheitForecast(results);
+    })
+    .catch((err) => console.log(err));
+});
+
 function loadWeather() {
   weather
     .getWeather()

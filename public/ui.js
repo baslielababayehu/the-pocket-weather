@@ -6,13 +6,13 @@ class Display {
     this.lastUpdated = document.getElementById("d-last-updated");
     this.changeUnits = document.getElementById("change-units");
     this.icon = document.getElementById("d-icon");
-    this.dailyIcon = document.querySelector(".d-icon-1");
-    this.dailyIcon = document.querySelector(".d-icon-2");
-    this.dailyIcon = document.querySelector(".d-icon-3");
-    this.dailyIcon = document.querySelector(".d-icon-4");
-    this.dailyIcon = document.querySelector(".d-icon-5");
-    this.dailyIcon = document.querySelector(".d-icon-6");
-    this.dailyIcon = document.querySelector(".d-icon-7");
+    this.dailyIcon1 = document.querySelector(".d-icon-1");
+    this.dailyIcon2 = document.querySelector(".d-icon-2");
+    this.dailyIcon3 = document.querySelector(".d-icon-3");
+    this.dailyIcon4 = document.querySelector(".d-icon-4");
+    this.dailyIcon5 = document.querySelector(".d-icon-5");
+    this.dailyIcon6 = document.querySelector(".d-icon-6");
+    this.dailyIcon7 = document.querySelector(".d-icon-7");
   }
   displayDetails(results) {
     let i = 0;
@@ -26,7 +26,7 @@ class Display {
       detailArea.appendChild(details);
     }
     document.querySelector(".item0").innerHTML = `Feels like ${Math.round(
-      results.main.feels_like
+      results.main.feels_like - 273.15
     )}<span style="font-size: 1rem;">&#176;</span>`;
     document.querySelector(".item1").textContent = `Humidity: ${Math.round(
       results.main.humidity
@@ -73,13 +73,13 @@ class Display {
       }@2x.png
       " /></div>
      
-      <div class="col-6" style="display: flex; flex-direction: row; justify-content: flex-end"><h4>${Math.round(
-        results.list[i + 1].main.temp_max
+      <div class="col-6 daily-high" style="display: flex; flex-direction: row; justify-content: flex-end"><h4>${Math.round(
+        results.list[i + 1].main.temp_max - 273.15
       )}<span>&#176;</span></h4></div>
-      <div class="col-6" style="display: flex; flex-direction: row; align-items: center"><h6>${Math.round(
-        results.list[i + 1].main.temp_min
+      <div class="col-6 daily-low" style="display: flex; flex-direction: row; align-items: center"><h6>${Math.round(
+        results.list[i + 1].main.temp_min - 273.15
       )}<span style="font-size: 1rem;">&#176;</span></h6></div>
-      <div class="col-12 text-center ">${
+      <div class="col-12 text-center">${
         results.list[i + 1].weather[0].description
       }</div>
     </div>`;
@@ -91,6 +91,67 @@ class Display {
     }
   }
 
-  setCelsius(results) {}
-  setfahrenheit(results) {}
+  setCelsiusMain(results) {
+    console.log("logged");
+
+    //change units of large icon
+    document.getElementById("d-degrees-number").innerHTML = `${Math.round(
+      results.main.temp - 273.15
+    )} <span>&#176;</span>`;
+
+    //change units of "feels like"
+    document.querySelector(".item0").innerHTML = `Feels like ${Math.round(
+      results.main.feels_like - 273.15
+    )}<span style="font-size: 1rem;">&#176;</span>`;
+  }
+
+  setCelsiusForecast(results) {
+    console.log("logged here");
+    //change units of "Daily high and Daily Low"
+    document.querySelectorAll(".daily-high").forEach((element, index) => {
+      element.innerHTML = `<h4>${Math.round(
+        results.list[index + 1].main.temp_max - 273.15
+      )}<span>&#176;</span></h4></div>`;
+
+      // element.innerHTML = `<h6>${Math.round(
+      //   results.list[index + 1].main.temp_min + 273.15
+      // )}<span style="font-size: 1rem;">&#176;</span></h6>`;
+    });
+    document.querySelectorAll(".daily-low").forEach((element, index) => {
+      console.log(element);
+      element.innerHTML = `<h6>${Math.round(
+        results.list[index + 1].main.temp_min - 273.15
+      )}<span>&#176;</span></h6></div>`;
+    });
+  }
+
+  setFahrenheitMain(results) {
+    console.log("logged");
+
+    //change units of large icon
+    document.getElementById("d-degrees-number").innerHTML = `${Math.round(
+      (results.main.temp - 273.15) * (9 / 5) + 32
+    )} <span>&#176;</span>`;
+
+    //change units of "feels like"
+    document.querySelector(".item0").innerHTML = `Feels like ${Math.round(
+      (results.main.feels_like - 273.15) * (9 / 5) + 32
+    )}<span style="font-size: 1rem;">&#176;</span>`;
+  }
+
+  setFahrenheitForecast(results) {
+    //change units of "Daily high and Daily Low"
+    document.querySelectorAll(".daily-high").forEach((element, index) => {
+      element.innerHTML = `<h4>${Math.round(
+        (results.list[index + 1].main.temp_max - 273.15) * (9 / 5) + 32
+      )}<span>&#176;</span></h4></div>`;
+    });
+
+    document.querySelectorAll(".daily-low").forEach((element, index) => {
+      console.log(element);
+      element.innerHTML = `<h6>${Math.round(
+        (results.list[index + 1].main.temp_min - 273.15) * (9 / 5) + 32
+      )}<span>&#176;</span></h6></div>`;
+    });
+  }
 }
