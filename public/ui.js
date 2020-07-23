@@ -16,12 +16,12 @@ class Display {
   }
   displayDetails(results) {
     let i = 0;
-    while (i < 6) {
+    while (i < 3) {
       let details = document.createElement("div");
       details.className = `col-4  item${i}`;
       i++;
       details.textContent = "wassup";
-      console.log(details);
+      // console.log(details);
       const detailArea = document.querySelector(".details");
       detailArea.appendChild(details);
     }
@@ -36,18 +36,15 @@ class Display {
     )} mph`;
   }
   displayFirst(results) {
-    console.log(results);
+    // console.log(results);
     this.location.innerHTML = `<h3>${results.name}</h3>`;
     this.degreesNumber.innerHTML = `${Math.round(
       results.main.temp - 273.15
     )} <span>&#176;</span>`;
     this.description.textContent = results.weather[0].description;
-    console.log(results.weather[0].description);
+    // console.log(results.weather[0].description);
     this.lastUpdated.textContent = `Updated as of now`;
-    this.changeUnits.addEventListener("click", (e) => {
-      //change color of clicked item and other to white
-      //update number
-    });
+
     this.icon.setAttribute(
       "src",
       `http://openweathermap.org/img/wn/${results.weather[0].icon}@2x.png`
@@ -85,14 +82,14 @@ class Display {
     </div>`;
       i++;
 
-      console.log(details);
+      // console.log(details);
       const forecastArea = document.querySelector(".daily-forecast");
       forecastArea.appendChild(details);
     }
   }
 
   setCelsiusMain(results) {
-    console.log("logged");
+    // console.log("logged");
 
     //change units of large icon
     document.getElementById("d-degrees-number").innerHTML = `${Math.round(
@@ -106,7 +103,7 @@ class Display {
   }
 
   setCelsiusForecast(results) {
-    console.log("logged here");
+    // console.log("logged here");
     //change units of "Daily high and Daily Low"
     document.querySelectorAll(".daily-high").forEach((element, index) => {
       element.innerHTML = `<h4>${Math.round(
@@ -118,7 +115,7 @@ class Display {
       // )}<span style="font-size: 1rem;">&#176;</span></h6>`;
     });
     document.querySelectorAll(".daily-low").forEach((element, index) => {
-      console.log(element);
+      // console.log(element);
       element.innerHTML = `<h6>${Math.round(
         results.list[index + 1].main.temp_min - 273.15
       )}<span>&#176;</span></h6></div>`;
@@ -126,7 +123,7 @@ class Display {
   }
 
   setFahrenheitMain(results) {
-    console.log("logged");
+    // console.log("logged");
 
     //change units of large icon
     document.getElementById("d-degrees-number").innerHTML = `${Math.round(
@@ -148,10 +145,40 @@ class Display {
     });
 
     document.querySelectorAll(".daily-low").forEach((element, index) => {
-      console.log(element);
+      // console.log(element);
       element.innerHTML = `<h6>${Math.round(
         (results.list[index + 1].main.temp_min - 273.15) * (9 / 5) + 32
       )}<span>&#176;</span></h6></div>`;
     });
+  }
+  clearweather() {
+    //clear main weather
+
+    this.location.innerHTML = ``;
+    this.degreesNumber.innerHTML = ``;
+    this.description.textContent = "";
+    this.lastUpdated.textContent = "";
+    this.icon.setAttribute("src", `none`);
+    if (document.querySelector(".details").innerHTML != "") {
+      document.querySelector(".details").innerHTML = "";
+    }
+
+    // clear forecast
+    if (document.querySelector(".daily-forecast").innerHTML != "")
+      document.querySelector(".daily-forecast").innerHTML = "";
+  }
+  cityNotFound() {
+    console.log("dont display shit brobro");
+    const mainContainer = document.querySelector(".main-container");
+    mainContainer.className = "main-container d-none";
+    const dailyContainer = document.querySelector(".daily-container");
+    dailyContainer.className = "daily-container d-none";
+    //show city not found alert
+  }
+  cityFound() {
+    const mainContainer = document.querySelector(".main-container");
+    mainContainer.className = "main-container";
+    const dailyContainer = document.querySelector(".daily-container");
+    dailyContainer.className = "daily-container";
   }
 }
