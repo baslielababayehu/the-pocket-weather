@@ -6,7 +6,7 @@ const API_KEY = process.env.API_KEY;
 console.log("The API Key is: " + API_KEY);
 
 const app = express();
-app.listen(2999, () => console.log("listening at 2999"));
+app.listen(process.env.PORT || 2999, () => console.log("listening at 2999"));
 app.use(express.static("public"));
 
 app.get("/weather/:city", async (request, response) => {
