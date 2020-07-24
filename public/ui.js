@@ -6,13 +6,6 @@ class Display {
     this.lastUpdated = document.getElementById("d-last-updated");
     this.changeUnits = document.getElementById("change-units");
     this.icon = document.getElementById("d-icon");
-    this.dailyIcon1 = document.querySelector(".d-icon-1");
-    this.dailyIcon2 = document.querySelector(".d-icon-2");
-    this.dailyIcon3 = document.querySelector(".d-icon-3");
-    this.dailyIcon4 = document.querySelector(".d-icon-4");
-    this.dailyIcon5 = document.querySelector(".d-icon-5");
-    this.dailyIcon6 = document.querySelector(".d-icon-6");
-    this.dailyIcon7 = document.querySelector(".d-icon-7");
   }
   displayDetails(results) {
     let i = 0;
