@@ -30,3 +30,15 @@ app.get("/forecast/:city", async (request, response) => {
   const responseData = await fetch_response.json();
   return response.json(responseData);
 });
+
+app.get("/oneCallWeather/", async (request, response) => {
+  // const city = request.params.city;
+
+  const fetch_response = await fetch(
+    `https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&
+    exclude=hourly,daily&appid=${API_KEY}`
+  );
+
+  const responseData = await fetch_response.json();
+  return response.json(responseData);
+});
