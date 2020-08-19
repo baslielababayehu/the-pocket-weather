@@ -6,6 +6,7 @@ const display = new Display();
 window.addEventListener("load", (event) => {
   loadWeather();
   loadForecast();
+  loadDailyWeather();
 });
 
 let findCity = (e) => {
@@ -70,8 +71,9 @@ function loadWeather() {
     .then((results) => {
       //load UI items
       display.cityFound();
-      display.displayFirst(results);
-      display.displayDetails(results);
+      display.displayCity(results);
+      // display.displayCurrentWeatherDetails(results);
+      // display.displayDetails(results);
     })
     .catch((err) => {
       console.log(err);
@@ -84,6 +86,22 @@ function loadForecast() {
     .then((results) => {
       display.cityFound();
       display.displayDailyForecast(results);
+    })
+    .catch((err) => {
+      console.log(err);
+      display.cityNotFound();
+    });
+}
+function loadDailyWeather() {
+  weather
+    .oneCallWeather()
+    .then((dailyInfo) => {
+      //load UI items
+      display.cityFound();
+      display.displayCurrentWeatherDetails(dailyInfo);
+
+      // display.displayCity(dailyInfo);
+      // display.displayDetails(dailyInfo);
     })
     .catch((err) => {
       console.log(err);
