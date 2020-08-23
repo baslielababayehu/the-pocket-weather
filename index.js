@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const API_KEY = process.env.API_KEY;
 const API_KEY_GOOGLE_MAPS = process.env.API_KEY_GOOGLE_MAPS;
-console.log("The API Key is: " + API_KEY);
+console.log("The API Key is: " + API_KEY_GOOGLE_MAPS);
 
 const app = express();
 app.listen(process.env.PORT || 2999, () => console.log("listening at 2999"));
@@ -32,11 +32,12 @@ app.get("/weather/:city", async (request, response) => {
 //   return response.json(responseData);
 // });
 
-app.get("/oneCallWeather/", async (request, response) => {
-  // const city = request.params.city;
+app.get("/oneCallWeather/:lat/:lon", async (request, response) => {
+  const lat = request.params.lat;
+  const lon = request.params.lon;
 
   const fetch_response = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&
     exclude=hourly,daily&appid=${API_KEY}`
   );
 
@@ -44,11 +45,11 @@ app.get("/oneCallWeather/", async (request, response) => {
   return response.json(responseData);
 });
 
-app.get("/latlon/", async (request, response) => {
-  // const location = request.params.city;
-
+app.get("/latlon/:city", async (request, response) => {
+  const city = request.params.city;
+  console.log(city);
   const fetch_response = await fetch(
-    `https://maps.googleapis.com/maps/api/geocode/json?address=addis+ababa&key=${API_KEY_GOOGLE_MAPS}`
+    `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${API_KEY_GOOGLE_MAPS}`
   );
 
   const responseData = await fetch_response.json();
