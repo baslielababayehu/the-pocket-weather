@@ -6,7 +6,7 @@ const API_KEY = process.env.API_KEY;
 const API_KEY_GOOGLE_MAPS = process.env.API_KEY_GOOGLE_MAPS;
 
 const app = express();
-app.listen(process.env.PORT || 2999, () => console.log("listening at 2999"));
+app.listen(process.env.PORT || 2998, () => console.log("listening at 2998"));
 app.use(express.static("public"));
 
 app.get("/oneCallWeather/:lat/:lon", async (request, response) => {

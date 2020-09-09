@@ -1,45 +1,35 @@
 //init weather object
 
-const weather = new Weather("wooster");
+// const { response } = require("express");
+
+const weather = new Weather("Mountain View", 37.4220578, -122.0840897);
 const display = new Display();
 
 window.addEventListener("load", (event) => {
   loadWeather();
-  loadForecast();
   loadDailyWeather();
 });
 
-let findCity = (e) => {
-  console.log("gets to here");
+let findCity = async (e) => {
   display.clearweather();
-  console.log(e.target.value);
-  let city = e.target.value + " ";
-
+  let city = document.getElementById("input-city").value;
   weather.city = city;
   loadWeather();
-  loadForecast();
+  loadDailyWeather();
+  loadLatLon();
   display.cityFound();
 };
-document.getElementById("input-city").addEventListener("keydown", findCity);
-document
-  .getElementById("input-city")
-  .addEventListener("click", (e) => console.log(e.target));
+
+document.getElementById("search-button").addEventListener("click", findCity);
 
 //change to celsius
 document.querySelector(".change-celsius").addEventListener("click", (e) => {
-  console.log(e.target);
   weather
-    .getWeather()
+    .getReturnWeather()
     .then((results) => {
       //change to celsius
+      console.log(results);
       display.setCelsiusMain(results);
-    })
-    .catch((err) => console.log(err));
-
-  weather
-    .getForecast()
-    .then((results) => {
-      //change to celsius
       display.setCelsiusForecast(results);
     })
     .catch((err) => console.log(err));
@@ -47,19 +37,11 @@ document.querySelector(".change-celsius").addEventListener("click", (e) => {
 
 //change to f
 document.querySelector(".change-fahrenheit").addEventListener("click", (e) => {
-  console.log(e.target);
   weather
-    .getWeather()
+    .getReturnWeather()
     .then((results) => {
       //change to celsius
       display.setFahrenheitMain(results);
-    })
-    .catch((err) => console.log(err));
-
-  weather
-    .getForecast()
-    .then((results) => {
-      //change to celsius
       display.setFahrenheitForecast(results);
     })
     .catch((err) => console.log(err));
@@ -72,36 +54,22 @@ function loadWeather() {
       //load UI items
       display.cityFound();
       display.displayCity(results);
-      // display.displayCurrentWeatherDetails(results);
-      // display.displayDetails(results);
     })
     .catch((err) => {
       console.log(err);
       display.cityNotFound();
     });
 }
-function loadForecast() {
-  weather
-    .getForecast()
-    .then((results) => {
-      display.cityFound();
-      display.displayDailyForecast(results);
-    })
-    .catch((err) => {
-      console.log(err);
-      display.cityNotFound();
-    });
-}
+
 function loadDailyWeather() {
   weather
-    .oneCallWeather()
+    .getReturnWeather()
     .then((dailyInfo) => {
       //load UI items
       display.cityFound();
       display.displayCurrentWeatherDetails(dailyInfo);
-
-      // display.displayCity(dailyInfo);
-      // display.displayDetails(dailyInfo);
+      display.displayCurrentWeatherInfo(dailyInfo);
+      display.displayForecastSection(dailyInfo);
     })
     .catch((err) => {
       console.log(err);

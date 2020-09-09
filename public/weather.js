@@ -1,20 +1,32 @@
+// const { response } = require("express");
+
 class Weather {
-  constructor(city, state, zipcode) {
+  constructor(city, lat, lon) {
     this.city = city;
-    this.state = state;
-    this.zipcode = zipcode;
+    this.lat = lat;
+    this.lon = lon;
+    city = "wooster";
   }
 
   //fetch weather from API
   async getWeather() {
-    const response = await fetch(`/weather/${this.city}`);
-    const responseData = await response.json();
-    console.log(responseData);
-    return responseData;
+    const address = await fetch(`latlon/${this.city}`).then((response) =>
+      response.json()
+    );
+    return address;
   }
-  async getForecast() {
-    const response = await fetch(`/forecast/${this.city}`);
-    const responseData = await response.json();
-    return responseData;
+
+  async getReturnWeather() {
+    const latLon = await fetch(`latlon/${this.city}`).then((response) =>
+      response.json()
+    );
+    this.latLon = latLon.results[0].geometry.location;
+    this.lat = this.latLon.lat;
+    this.lon = this.latLon.lng;
+    const response = await fetch(
+      `oneCallWeather/${this.lat}/${this.lon}`
+    ).then((response) => response.json());
+    console.log(response);
+    return response;
   }
 }
