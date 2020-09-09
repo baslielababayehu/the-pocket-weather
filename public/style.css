@@ -1,0 +1,16 @@
+a {
+  color: #cfdaec;
+}
+
+a:hover {
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul.social-icons li {
+  display: inline;
+  font-size: 2rem;
+}

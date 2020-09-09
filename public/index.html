@@ -16,6 +16,8 @@
       href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="style.css">
+
   </head>
   <body
     style="
@@ -27,7 +29,7 @@
   >
     <div
       class="custom-navbar m-0 p-0"
-      style="background-color: #1b7ca4; margin: 0px; padding: 0px;"
+      style="background-color: #094d74; margin: 0px; padding: 0px;"
     >
       <div class="row mx-0 py-1">
         <div class="col-6">
@@ -35,8 +37,8 @@
         </div>
         <div class="col-6">
           <div class="row">
-            <div class="col-9 p-0">
-              <form class="mr-2">
+            <div class="col-9">
+              <form class="">
                 <input
                   style="
                     background-color: white;
@@ -48,21 +50,16 @@
                   "
                   class="form-control border mx-0"
                   type="search"
-                  placeholder="City or Zip Code"
+                  placeholder="Enter Location"
                   aria-label="Search"
                   id="input-city"
                   value=""
                 />
               </form>
+
             </div>
-            <div class="col-2 mx-0 p-0">
-              <a href="#" class="search-button">
-                <i
-                  class="fa fa-search"
-                  aria-hidden="true"
-                  style="font-size: 200%;"
-                ></i>
-              </a>
+            <div class="col-2">
+              <a id="search-button" href="#"><i style="font-size: 2rem; display: flex; justify-content: center;" class="fa fa-location-arrow"></i></a> 
             </div>
           </div>
         </div>
@@ -71,35 +68,40 @@
     <!-- Weather Display -->
     <div class="container">
       <div class="row p-0 m-0 main-container">
-        <div class="col-xl-7 col-lg-6 col-md-6 col-sm-12 mx-auto mt-5">
+        <div class="search-container"></div>
+        <div class="col-xl-7 col-lg-6 col-md-6 col-sm-12 mx-auto mt-5 toClear">
           <div class="row">
             <div class="col-12 text-center mx-auto" id="d-location"></div>
-
+            <div class="col-12"></div>
             <div
-              class="col-4 p-0"
+              class="col-12 p-0"
               style="
                 display: flex;
                 flex-direction: row;
-                justify-content: flex-end;
+                justify-content: center;
               "
             >
               <img
                 class="p-0 m-0"
                 src=""
                 id="d-icon"
-                style="height: 100%; min-height: 60px; width: auto;"
+                style="height: 100%; min-height: 150px; width: auto;"
               />
             </div>
-            <div class="col-8 p-0 m-0 text-center">
+            <div class="col-12 p-0 m-0 text-center" style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+          ">
               <div class="row p-0 m-0">
-                <div class="col-auto p-0 m-0">
-                  <h2 style="font-size: 6.8vmax;" id="d-degrees-number"></h2>
+                <div class="col-auto p-0 m-0 ">
+                  <h2 style="font-size: 4rem;" id="d-degrees-number"></h2>
                 </div>
                 <!-- <div
                   class="col-1 col-lg-1 border border-secondary p-0 m-0"
                   id="d-degrees-icon"
                 ></div> -->
-                <div class="col-2 py-1" id="change-units">
+                <div class="col-2 pt- ml-2" id="change-units" >
                   <a href="#" class="text-white change-celsius">C</a> <br /><a
                     href="#"
                     class="text-white change-fahrenheit"
@@ -120,7 +122,7 @@
 
     <div class="daily-container">
       <div class="row p-0 m-0">
-        <div class="col-12 mt-5">Daily Forecast</div>
+        <div class="col-12 mt-5">Daily 7-day Forecast</div>
         <div class="col-12 mx-auto py-2 px-4 border">
           <div
             class="row daily-forecast"
@@ -130,6 +132,38 @@
       </div>
     </div>
     <!-- </nav> -->
+    <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+  
+
+ 
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p class="copyright-text">
+              Copyright &copy; 2020 All Rights Reserved by
+              Basliel Ababayehu.
+            </p>
+          </div>
+
+          <div class="col-12">
+            <ul class="social-icons ">
+              <li>
+                <a class="personal-website" href="http://baslielababayehu.com"><i class="fa fa-globe"></i></a>
+              </li>
+              <li>
+                <a class="github" href="https://github.com/baslielababayehu"><i class="fa fa-github"></i></a>
+              </li>
+              <li>
+                <a class="linkedin" href="https://www.linkedin.com/in/baslielababayehu/"><i class="fa fa-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
     <!-- JS, Popper.js, and jQuery -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
