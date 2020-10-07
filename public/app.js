@@ -20,7 +20,15 @@ let findCity = async (e) => {
   display.cityFound();
 };
 
+let onEnter = (e) => {
+  console.log(e.key);
+  if (e.key === "Enter") {
+    findCity();
+  }
+};
+
 document.getElementById("search-button").addEventListener("click", findCity);
+document.getElementById("input-city").addEventListener("keydown", onEnter);
 
 //change to celsius
 document.querySelector(".change-celsius").addEventListener("click", (e) => {
